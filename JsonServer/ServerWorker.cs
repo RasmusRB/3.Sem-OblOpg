@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -13,6 +14,7 @@ namespace JsonServer
     {
         private const int PORT = 4646;
 
+        // statisk liste til data
         private static List<Cykel> _cykler = new List<Cykel>()
         {
             new Cykel(1, "blå", 1999.99, 16),
@@ -24,7 +26,6 @@ namespace JsonServer
 
         public ServerWorker()
         {
-
         }
 
         internal void Start()
@@ -32,9 +33,11 @@ namespace JsonServer
             TcpListener server = new TcpListener(IPAddress.Loopback, PORT);
             server.Start();
 
-            while (true)
+            while (true) // håndtere flere klienter
             {
                 TcpClient socket = server.AcceptTcpClient();
+
+                // håndtere samtidigt
                 Task.Run(
                     () =>
                     {
@@ -52,14 +55,34 @@ namespace JsonServer
             {
                 sw.AutoFlush = true;
 
-                string cykelString = sr.ReadLine();
+                string cmdStr = sr.ReadLine();
+                string data = sr.ReadLine();
 
-                Cykel cykel = JsonConvert.DeserializeObject<Cykel>(cykelString);
+                switch (cmdStr)
+                {
+                    case "HentAlle":
+                        string json = JsonConvert.SerializeObject(_cykler);
+                        sw.WriteLine(json);
+                        break;
 
-                Console.WriteLine("Received cykel json string " + cykelString);
-                Console.WriteLine("Received cykel : " + cykel);
+                    case "Hent":
+                        int id = Int32.Parse(data);
+                        Cykel cykel = _cykler.Find(c => c.Id == id);
+                        string enCykelJson = JsonConvert.SerializeObject(cykel);
+                        sw.WriteLine(enCykelJson);
+                        break;
+
+                    case "Gem":
+                        Cykel nyCykel = JsonConvert.DeserializeObject<Cykel>(data);
+                        _cykler.Add(nyCykel);
+                        break;
+
+                    default:
+                        sw.WriteLine("Ikke en tilladt kommando");
+                        break;
+                }
             }
-            socket.Close();
+            socket?.Close(); // ? sikkerheds foranstaltning der ikke tillader null
         }
     }
 }

@@ -65,8 +65,9 @@ namespace CykelREST.Controllers
         [Route("{id}")]
         public void Delete(int id)
         {
-            Cykel cykel = Get(id);
-            _cykler.Remove(cykel);
+            Cykel c = Get(id);
+            if (c == null)
+                return;
         }
     }
 }

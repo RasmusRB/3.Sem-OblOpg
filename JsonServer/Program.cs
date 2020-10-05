@@ -10,7 +10,6 @@ namespace JsonServer
             worker.Start();
 
             Console.ReadLine();
-            Console.ReadLine();
         }
     }
 }

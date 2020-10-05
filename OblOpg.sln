@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CykelTests", "CykelTests\Cy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CykelREST", "CykelREST\CykelREST.csproj", "{BB16A71E-F722-4032-A89E-6C29D1386805}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonServer", "JsonServer\JsonServer.csproj", "{2323F08C-F78C-4604-941F-BDDEE047A68D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonClient", "JsonClient\JsonClient.csproj", "{A07A9BAC-3547-4246-A199-8895604EB2FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonServer", "JsonServer\JsonServer.csproj", "{2323F08C-F78C-4604-941F-BDDEE047A68D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{2323F08C-F78C-4604-941F-BDDEE047A68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2323F08C-F78C-4604-941F-BDDEE047A68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2323F08C-F78C-4604-941F-BDDEE047A68D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A07A9BAC-3547-4246-A199-8895604EB2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A07A9BAC-3547-4246-A199-8895604EB2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A07A9BAC-3547-4246-A199-8895604EB2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A07A9BAC-3547-4246-A199-8895604EB2FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
