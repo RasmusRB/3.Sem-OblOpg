@@ -12,6 +12,7 @@ namespace JsonServer
 {
     internal class ServerWorker
     {
+        // const port nr
         private const int PORT = 4646;
 
         // statisk liste til data
